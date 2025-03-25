@@ -1,4 +1,3 @@
-# modules/random_operations.py
 import random
 import string
 
@@ -53,7 +52,6 @@ def create_random_password():
         print("Please enter a valid password length.")
 
 def generate_random_otp():
-    """Generate a random One-Time Password (OTP)."""
     try:
         length = int(input("Enter OTP length: "))
         
@@ -63,7 +61,6 @@ def generate_random_otp():
         print("Please enter a valid OTP length.")
 
 def random_sampling():
-    """Demonstrate random sampling from a dataset."""
     try:
         dataset = input("Enter comma-separated items (e.g., apple,banana,cherry,date): ").split(',')
         sample_size = int(input("Enter sample size: "))
@@ -74,7 +71,6 @@ def random_sampling():
         print("Please enter valid inputs.")
 
 def random_menu():
-    """Random Data Generation menu."""
     while True:
         print("\n--- Random Data Generation ---")
         print("1. Generate Random Number")
@@ -85,22 +81,23 @@ def random_menu():
         print("6. Back to Main Menu")
         
         try:
-            choice = int(input("Enter your choice: "))
+            selection = int(input("Enter your choice: "))
             
-            if choice == 1:
-                generate_random_number()
-            elif choice == 2:
-                generate_random_list()
-            elif choice == 3:
-                create_random_password()
-            elif choice == 4:
-                generate_random_otp()
-            elif choice == 5:
-                random_sampling()
-            elif choice == 6:
-                break
-            else:
-                print("Invalid choice. Please try again.")
+            match selection:
+                case 1:
+                    generate_random_number()
+                case 2:
+                    generate_random_list()
+                case 3:
+                    create_random_password()
+                case 4:
+                    generate_random_otp()
+                case 5:
+                    random_sampling()
+                case 6:
+                    break
+                case _:
+                    print("Invalid choice. Please try again.")
         
         except ValueError:
             print("Please enter a valid number.")
