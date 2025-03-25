@@ -1,7 +1,6 @@
 import os
 
 def create_new_file():
-    """Create a new file."""
     try:
         filename = input("Enter file name: ")
        
@@ -77,22 +76,23 @@ def file_menu():
         print("6. Back to Main Menu")
         
         try:
-            choice = int(input("Enter your choice: "))
+            selection = int(input("Enter your choice: "))
             
-            if choice == 1:
-                create_new_file()
-            elif choice == 2:
-                write_to_file()
-            elif choice == 3:
-                read_from_file()
-            elif choice == 4:
-                append_to_file()
-            elif choice == 5:
-                list_files()
-            elif choice == 6:
-                break
-            else:
-                print("Invalid choice. Please try again.")
+            match selection:
+                case 1:
+                    create_new_file()
+                case 2:
+                    write_to_file()
+                case 3:
+                    read_from_file()
+                case 4:
+                    append_to_file()
+                case 5:
+                    list_files()
+                case 6:
+                    break
+                case _:
+                    print("Invalid choice. Please try again.")
         
         except ValueError:
             print("Please enter a valid number.")
