@@ -1,4 +1,4 @@
-# modules/uuid_operations.py
+
 import uuid
 
 def generate_uuid1():
@@ -24,7 +24,7 @@ def generate_custom_uuid():
     print("4. X500 Namespace")
     
     try:
-        choice = int(input("Enter namespace choice: "))
+        selection = int(input("Enter namespace choice: "))
         name = input("Enter a name for the UUID: ")
         
         namespaces = {
@@ -34,11 +34,12 @@ def generate_custom_uuid():
             4: uuid.NAMESPACE_X500
         }
         
-        if choice in namespaces:
-            custom_uuid = uuid.uuid5(namespaces[choice], name)
-            print("Generated Custom UUID:", custom_uuid)
-        else:
-            print("Invalid namespace choice.")
+        match selection:
+            case 1 | 2 | 3 | 4:
+                custom_uuid = uuid.uuid5(namespaces[selection], name)
+                print("Generated Custom UUID:", custom_uuid)
+            case _:
+                print("Invalid namespace choice.")
     except ValueError:
         print("Please enter a valid choice.")
 
@@ -51,18 +52,19 @@ def uuid_menu():
         print("4. Back to Main Menu")
         
         try:
-            choice = int(input("Enter your choice: "))
+            selection = int(input("Enter your choice: "))
             
-            if choice == 1:
-                generate_uuid1()
-            elif choice == 2:
-                generate_uuid4()
-            elif choice == 3:
-                generate_custom_uuid()
-            elif choice == 4:
-                break
-            else:
-                print("Invalid choice. Please try again.")
+            match selection:
+                case 1:
+                    generate_uuid1()
+                case 2:
+                    generate_uuid4()
+                case 3:
+                    generate_custom_uuid()
+                case 4:
+                    break
+                case _:
+                    print("Invalid choice. Please try again.")
         
         except ValueError:
             print("Please enter a valid number.")
